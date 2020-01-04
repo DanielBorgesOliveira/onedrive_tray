@@ -1,12 +1,12 @@
-Simples programa para criar um icone no system tray e exibir o status do programa
+A simple program to create a system tray icon and display program status
 
-Adiciona um system tray para o program de sincronização de arquivos do onedrive https://github.com/abraunegg/onedrive.
-Exibe o status do programa
+Adds a system tray to the onedrive file synchronization program https://github.com/abraunegg/onedrive.
+Displays program status
 
-Clique com o botão esquerdo do mouse e o programa mostra o andamento da sincronização.
-Ao clicar com o botão esquerdo um menu com as opções disponíveis é mostrado
+Click with the left mouse button and the program shows the synchronization progress.
+Click with the right mouse button and a menu with the available options is shown.
 
-Programa escrito utlizando a lib QT 5.13.0.
+The program was written using lib QT 5.13.0.
 
-Para utilizar o programa você deve primeiro compilar e instalar o cliente onedrive disponível em https://github.com/abraunegg/onedrive.
-Depois você deve ajustar as configurações no arquivo window.cpp na linha 47.
+To use the program you must first compile and install the onedrive client available at https://github.com/abraunegg/onedrive.
+Then you must adjust the settings in the window.cpp file on line 47.
