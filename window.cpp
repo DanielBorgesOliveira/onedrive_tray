@@ -1,4 +1,5 @@
 #include "window.h"
+#include "window_1.h"
 
 #ifndef QT_NO_SYSTEMTRAYICON
 
@@ -12,7 +13,6 @@
 #include <QLineEdit>
 #include <QMenu>
 #include <QPushButton>
-#include <QSpinBox>
 #include <QTextEdit>
 #include <QVBoxLayout>
 #include <QMessageBox>
@@ -20,6 +20,8 @@
 
 Window::Window()
 {
+    ConfigurationWindow = new Window_1;
+
     // Used to show the window in odd clicks and hide in even.
     auto_hide = true;
 
@@ -95,24 +97,24 @@ void Window::readStdError()
 
     terminal->appendPlainText(text);
 }
-
-// ********** Block to execute external program ********** //
+// ********** ***** ** ******* ******** ******* ********** //
+//
 void Window::closeEvent(QCloseEvent *event)
 {
-#ifdef Q_OS_OSX
-    if (!event->spontaneous() || !isVisible()) {
-        return;
-    },
-#endif
-    if (trayIcon->isVisible()) {
-        QMessageBox::information(this, tr("Systray"),
-                                 tr("The program will keep running in the "
-                                    "system tray. To terminate the program, "
-                                    "choose <b>Quit</b> in the context menu "
-                                    "of the system tray entry."));
-        hide();
-        event->ignore();
-    }
+  #ifdef Q_OS_OSX
+  if (!event->spontaneous() || !isVisible()) {
+      return;
+  },
+  #endif
+  if (trayIcon->isVisible()) {
+      QMessageBox::information(this, tr("Systray"),
+                               tr("The program will keep running in the "
+                                  "system tray. To terminate the program, "
+                                  "choose <b>Quit</b> in the context menu "
+                                  "of the system tray entry."));
+      hide();
+      event->ignore();
+  }
 }
 
 void Window::terminate()
@@ -142,7 +144,6 @@ void Window::iconActivated(QSystemTrayIcon::ActivationReason reason)
             }
             break;
         case QSystemTrayIcon::MiddleClick: // Put here what should call when click with mid button
-
             // Get process identifier (PID).
             qint64 pid = process->processId();
 
@@ -170,92 +171,36 @@ void Window::iconActivated(QSystemTrayIcon::ActivationReason reason)
 
 void Window::showMessage(QString &text)
 {
-    /*
-     * Funstion used to print messagem in the notification baloon.
-     */
-    showIconCheckBox->setChecked(true);
-    QSystemTrayIcon::MessageIcon msgIcon = QSystemTrayIcon::MessageIcon(typeComboBox->itemData(typeComboBox->currentIndex()).toInt());
-    if (msgIcon == QSystemTrayIcon::NoIcon)
-    {
-        QIcon icon(iconComboBox->itemIcon(iconComboBox->currentIndex()));
-        trayIcon->showMessage(titleEdit->text(), text, icon, durationSpinBox->value() * 1000);
-    }
-    else
-    {
-        trayIcon->showMessage(titleEdit->text(), text, msgIcon, durationSpinBox->value() * 1000);
-    }
+  /*
+   * Function used to print messagem in the notification baloon.
+   */
+  QSystemTrayIcon::MessageIcon msgIcon = QSystemTrayIcon::MessageIcon(0);
+  trayIcon->showMessage(titleEdit->text(), text, msgIcon, 5000);
 }
 
 void Window::createMessageGroupBox()
 {
+  /*
+   * Create the LOG message message box.
+  */
+  // Title of notification ballon and tray menu.
+  titleEdit = new QLineEdit(tr("OneDrive Tray icon"));
 
-    typeComboBox = new QComboBox;
-    typeComboBox->addItem(tr("None"), QSystemTrayIcon::NoIcon);
-    typeComboBox->addItem(style()->standardIcon(QStyle::SP_MessageBoxInformation), tr("Information"), QSystemTrayIcon::Information);
-    typeComboBox->addItem(style()->standardIcon(QStyle::SP_MessageBoxWarning), tr("Warning"), QSystemTrayIcon::Warning);
-    typeComboBox->addItem(style()->standardIcon(QStyle::SP_MessageBoxCritical), tr("Critical"), QSystemTrayIcon::Critical);
-    typeComboBox->addItem(QIcon(), tr("Custom icon"), QSystemTrayIcon::NoIcon);
-    typeComboBox->setCurrentIndex(1);
+  // ********** Log Console Output Area ********** //
+  terminal = new QPlainTextEdit;
+  terminal->setReadOnly(true);
 
-    durationSpinBox = new QSpinBox;
-    durationSpinBox->setRange(5, 60);
-    durationSpinBox->setSuffix(" s");
-    durationSpinBox->setValue(15);
+  QGridLayout *messageLayout = new QGridLayout;
+  messageLayout->addWidget(terminal, 2, 1, 1, 4);
+  messageLayout->setColumnStretch(3, 1);
+  messageLayout->setRowStretch(4, 1);
 
-    // Title of nitification ballon and tray menu.
-    titleEdit = new QLineEdit(tr("OneDrive Tray icon"));
+  messageGroupBox = new QGroupBox(tr("Log Console"));
+  messageGroupBox->setLayout(messageLayout);
 
-    // Output area.
-    terminal = new QPlainTextEdit;
-    terminal->setReadOnly(true);
-
-    QGridLayout *messageLayout = new QGridLayout;
-    messageLayout->addWidget(terminal, 2, 1, 1, 4);
-    messageLayout->setColumnStretch(3, 1);
-    messageLayout->setRowStretch(4, 1);
-
-    messageGroupBox = new QGroupBox(tr("OneDrive Tray Icon"));
-    messageGroupBox->setLayout(messageLayout);
-
-    // ********** Create the baloon warning in the tray ********** //
-    showIconCheckBox = new QCheckBox(tr("Show icon"));
-    showIconCheckBox->setChecked(true);
-
-    QHBoxLayout *iconLayout = new QHBoxLayout;
-    iconLayout->addWidget(iconLabel);
-    iconLayout->addWidget(iconComboBox);
-    iconLayout->addStretch();
-    iconLayout->addWidget(showIconCheckBox);
-    // ********** Create the baloon warning in the tray ********** //
-}
-
-void Window::createConfigurationGroupBox()
-{
-    // Title of nitification ballon and tray menu.
-    titleEdit = new QLineEdit(tr("Configuration Options"));
-
-    // Output area.
-    terminal = new QPlainTextEdit;
-    terminal->setReadOnly(true);
-
-    QGridLayout *messageLayout = new QGridLayout;
-    messageLayout->addWidget(terminal, 2, 1, 1, 4);
-    messageLayout->setColumnStretch(3, 1);
-    messageLayout->setRowStretch(4, 1);
-
-    messageGroupBox = new QGroupBox(tr("OneDrive Tray Icon"));
-    messageGroupBox->setLayout(messageLayout);
-
-    // ********** Create the baloon warning in the tray ********** //
-    showIconCheckBox = new QCheckBox(tr("Show icon"));
-    showIconCheckBox->setChecked(true);
-
-    QHBoxLayout *iconLayout = new QHBoxLayout;
-    iconLayout->addWidget(iconLabel);
-    iconLayout->addWidget(iconComboBox);
-    iconLayout->addStretch();
-    iconLayout->addWidget(showIconCheckBox);
-    // ********** Create the baloon warning in the tray ********** //
+  // ********** Create the baloon warning in the tray ********** //
+  showIconCheckBox = new QCheckBox(tr("Show icon"));
+  showIconCheckBox->setChecked(true);
 }
 
 void Window::createActions()
@@ -267,10 +212,15 @@ void Window::createActions()
     connect(consoleAction, &QAction::triggered, this, &QWidget::showNormal);
 
     configurationAction = new QAction(tr("&Configuration"), this);
-    connect(configurationAction, &QAction::triggered, this, &QWidget::showNormal);
+    connect(configurationAction, SIGNAL(triggered()), this, SLOT(OpenConfigurationWindow()));
 
     restartAction = new QAction(tr("&restart"), this);
     connect(restartAction, &QAction::triggered, this, &Window::restart);
+}
+
+void Window::OpenConfigurationWindow()
+{
+  ConfigurationWindow->show();
 }
 
 void Window::createTrayIcon()

@@ -1,5 +1,5 @@
-#ifndef WINDOW_H
-#define WINDOW_H
+#ifndef Window_1_H
+#define Window_1_H
 
 #include <QSystemTrayIcon>
 #include <QPlainTextEdit>
@@ -9,8 +9,6 @@
 #ifndef QT_NO_SYSTEMTRAYICON
 
 #include <QDialog>
-
-#include "window_1.h"
 
 QT_BEGIN_NAMESPACE
 class QAction;
@@ -25,22 +23,17 @@ class QTextEdit;
 QT_END_NAMESPACE
 
 //! [0]
-class Window : public QDialog
+class Window_1 : public QDialog
 {
     Q_OBJECT
 
   public:
-    Window();
+    Window_1();
 
   protected:
     void closeEvent(QCloseEvent *event) override;
 
   private slots:
-    void iconActivated(QSystemTrayIcon::ActivationReason reason);
-    void showMessage(QString &text);
-    void readStdOutput();
-    void readStdError();
-    void OpenConfigurationWindow();
 
   private:
     void createIconGroupBox();
@@ -65,11 +58,13 @@ class Window : public QDialog
     QLabel *durationLabel;
     QLabel *durationWarningLabel;
     QLabel *titleLabel;
+    QLabel *syncdirLabel;
     QPlainTextEdit *terminal;
     QLabel *bodyLabel;
     QComboBox *typeComboBox;
     QSpinBox *durationSpinBox;
     QLineEdit *titleEdit;
+    QLineEdit *syncdirEdit;
     QTextEdit *bodyEdit;
     QPushButton *showMessageButton;
 
@@ -83,8 +78,6 @@ class Window : public QDialog
 
     QSystemTrayIcon *trayIcon;
     QMenu *trayIconMenu;
-
-    Window_1 *ConfigurationWindow;
 };
 //! [0]
 
