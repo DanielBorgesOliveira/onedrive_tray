@@ -16,10 +16,15 @@ Then you must adjust the settings in the window.cpp file on line 47.
 The steps bellow should be suffice to compile the program:
 
 $ git clone https://github.com/DanielBorgesOliveira/onedrive_tray.git
+
 $ cd onedrive_tray
+
 $ mkdir build
+
 $ cd build
+
 $ qmake ../systray.pro
+
 $ make
 
 This will create systray binary.
