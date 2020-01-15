@@ -103,7 +103,7 @@ void Window_1::createMessageGroupBox()
 
 	QGridLayout *messageLayout = new QGridLayout;
 
-	messageLayout->addWidget(typeLabel, 0, 0);
+	// messageLayout->addWidget(typeLabel, 0, 0);
 	//messageLayout->addWidget(typeComboBox, 0, 1, 1, 2);
 	messageLayout->addWidget(durationLabel, 1, 0);
 	messageLayout->addWidget(durationSpinBox, 1, 1);
