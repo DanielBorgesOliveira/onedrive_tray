@@ -30,7 +30,7 @@ class Window : public QDialog
     Q_OBJECT
 
   public:
-    Window();
+    Window(QString onedrive_path, QString onedrive_arguments);
 
   protected:
     void closeEvent(QCloseEvent *event) override;
@@ -47,7 +47,7 @@ class Window : public QDialog
     void createMessageGroupBox();
     void createActions();
     void createTrayIcon();
-    void execute();
+    void execute(QString onedrive_path, QString onedrive_arguments);
     void restart();
     void terminate();
     void createConfigurationGroupBox();

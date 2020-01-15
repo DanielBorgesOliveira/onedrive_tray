@@ -12,6 +12,23 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 
     QApplication app(argc, argv);
+    QCoreApplication::setApplicationName("onedrive-systray");
+
+    QCommandLineParser parser;
+    parser.setApplicationDescription("Run and control OneDrive from the system tray");
+    parser.addHelpOption();
+    QCommandLineOption onedrivePathOption(QStringList() << "p" << "onedrive-path",
+		    "Path to the OneDrive program", "path");
+    parser.addOption(onedrivePathOption);
+    QCommandLineOption onedriveArgsOption(QStringList() << "a" << "onedrive-args",
+		    "Arguments passed to OneDrive", "args");
+    parser.addOption(onedriveArgsOption);
+
+    parser.process(app);
+
+    QString onedrivePath = parser.value(onedrivePathOption);
+    QString onedriveArgs = parser.value(onedriveArgsOption);
+
 
     if (!QSystemTrayIcon::isSystemTrayAvailable()) {
         QMessageBox::critical(0, QObject::tr("Systray"), QObject::tr("I couldn't detect any system tray on this system."));
@@ -19,7 +36,7 @@ int main(int argc, char *argv[])
     }
     QApplication::setQuitOnLastWindowClosed(false);
 
-    Window window;
+    Window window(onedrivePath, onedriveArgs);
     //window.show();
     return app.exec();
 }

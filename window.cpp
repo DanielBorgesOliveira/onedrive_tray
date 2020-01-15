@@ -8,6 +8,7 @@
 #include <QComboBox>
 #include <QCoreApplication>
 #include <QCloseEvent>
+#include <QDebug>
 #include <QGroupBox>
 #include <QLabel>
 #include <QLineEdit>
@@ -18,7 +19,7 @@
 #include <QMessageBox>
 #include <QFrame>
 
-Window::Window()
+Window::Window(QString onedrive_path, QString onedrive_arguments)
 {
     ConfigurationWindow = new Window_1;
 
@@ -35,22 +36,31 @@ Window::Window()
     mainLayout->addWidget(messageGroupBox);
     setLayout(mainLayout);
 
-    execute();
+    execute(onedrive_path, onedrive_arguments);
 
     setWindowTitle(tr("Systray"));
     resize(400, 300);
 }
 
 // ********** Block to execute external program ********** //
-void Window::execute()
+void Window::execute(QString onedrive_path, QString onedrive_arguments)
 {
     process = new QProcess();
     //QStringList arguments{"--monitor", "--verbose", "--confdir", "/home/daniel/.config/onedrive"};
-    QStringList arguments{"--monitor", "--local-first", "--skip-symlinks", "--confdir", "/home/daniel/.config/onedrive"};
+    // QStringList arguments{"--monitor", "--local-first", "--skip-symlinks", "--confdir", "/home/daniel/.config/onedrive"};
 
-    QString program("/usr/local/bin/onedrive");
+    if (onedrive_path.isEmpty()) {
+	    onedrive_path = QString("onedrive");
+    }
+    if (onedrive_arguments.isEmpty()) {
+	    onedrive_arguments = QString("--monitor");
+    }
+    
+    qDebug() << "Selected onedrive path: " << onedrive_path;
+    qDebug() << "Selected onedrive args: " << onedrive_arguments;
 
-    process->setProgram(program);
+    QStringList arguments = onedrive_arguments.split(" ", QString::SkipEmptyParts);
+    process->setProgram(onedrive_path);
     process->setArguments(arguments);
 
     process->start();
