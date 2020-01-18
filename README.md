@@ -1,15 +1,12 @@
-A simple program to create a system tray icon and display program status
-
-Adds a system tray to the onedrive file synchronization program https://github.com/abraunegg/onedrive.
-Displays program status
+A simple program to create a system tray icon and display program status for onedrive client developed by abraunegg.
 
 Click with the left mouse button and the program shows the synchronization progress.
 Click with the right mouse button and a menu with the available options is shown.
+Click with the mid mouse button and the program shows the PID of the onedrive client.
 
 The program was written using lib QT 5.13.0.
 
 To use the program you must first compile and install the onedrive client available at https://github.com/abraunegg/onedrive.
-Then you must adjust the settings in the window.cpp file on line 47.
 
 /******************* How to compile *******************/
 
@@ -30,3 +27,18 @@ $ make
 This will create systray binary.
 
 Tested with QT 5.12.6 and 5.13.0.
+
+/******************* How to execute *******************/
+
+First move the binary to your path:
+
+$ sudo cp systray /usr/local/bin/onedrive_tray
+
+The execute the program:
+$ onedrive_tray --onedrive-path [path to onedrive client] --onedrive-args [onedrive client arguments].
+
+If you want the program to execute every time you log in you can put it in the auto start scripts.
+
+
+
+
