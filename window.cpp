@@ -21,8 +21,13 @@
 
 Window::Window(QString onedrive_path, QString onedrive_arguments)
 {
+    // Copy the program path and the arguments to be used
+    // in another parts of the program.
+    arguments = &onedrive_arguments;
+    path = &onedrive_path;
+    
     ConfigurationWindow = new Window_1;
-
+    
     // Used to show the window in odd clicks and hide in even.
     auto_hide = true;
 
@@ -55,7 +60,7 @@ void Window::execute(QString onedrive_path, QString onedrive_arguments)
     if (onedrive_arguments.isEmpty()) {
 	    onedrive_arguments = QString("--monitor");
     }
-    
+
     qDebug() << "Selected onedrive path: " << onedrive_path;
     qDebug() << "Selected onedrive args: " << onedrive_arguments;
 
@@ -78,6 +83,20 @@ void Window::restart()
     process->start(); // Start the process.
 
     terminal->appendPlainText("OneDrive reiniciado com sucesso.");
+}
+
+void Window::resync()
+{
+    terminal->appendPlainText("Resynchronizing OneDrive...");
+    
+    process->terminate(); // Kill process.
+    process->waitForFinished(); // Wait for process finish
+    
+    arguments->append(" --resync ");
+    
+    execute(*path, *arguments);
+    
+    terminal->appendPlainText("Resync completed with sucess.");
 }
 
 void Window::readStdOutput()
@@ -224,8 +243,11 @@ void Window::createActions()
     configurationAction = new QAction(tr("&Configuration"), this);
     connect(configurationAction, SIGNAL(triggered()), this, SLOT(OpenConfigurationWindow()));
 
-    restartAction = new QAction(tr("&restart"), this);
+    restartAction = new QAction(tr("&Restart"), this);
     connect(restartAction, &QAction::triggered, this, &Window::restart);
+
+    resyncAction = new QAction(tr("&Resync"), this);
+    connect(resyncAction, &QAction::triggered, this, &Window::resync);
 }
 
 void Window::OpenConfigurationWindow()
@@ -239,6 +261,7 @@ void Window::createTrayIcon()
     trayIconMenu->addAction(consoleAction);
     trayIconMenu->addAction(configurationAction);
     trayIconMenu->addAction(restartAction);
+    trayIconMenu->addAction(resyncAction);
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(quitAction);
 

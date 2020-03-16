@@ -31,6 +31,8 @@ class Window : public QDialog
 
   public:
     Window(QString onedrive_path, QString onedrive_arguments);
+    QString *arguments;
+    QString *path;
 
   protected:
     void closeEvent(QCloseEvent *event) override;
@@ -49,6 +51,7 @@ class Window : public QDialog
     void createTrayIcon();
     void execute(QString onedrive_path, QString onedrive_arguments);
     void restart();
+    void resync();
     void terminate();
     void createConfigurationGroupBox();
 
@@ -80,6 +83,7 @@ class Window : public QDialog
     QAction *consoleAction;
     QAction *configurationAction;
     QAction *restartAction;
+    QAction *resyncAction;
 
     QSystemTrayIcon *trayIcon;
     QMenu *trayIconMenu;
