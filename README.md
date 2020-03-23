@@ -54,6 +54,10 @@ If you want the program to execute every time you log in you can put it in the a
 If you do not have the necessary knowledge to compile a Linux program or simply you have no patience to compile another package you can download a pre-compiled binary developed by the community. Bellow, there are some packages available.
 
 
+<<<<<<< HEAD
 - This is an AUR package compile by [jugendhacker](https://github.com/jugendhacker) for ArchLinux. You can get it in [https://aur.archlinux.org/packages/onedrive_tray-git/](https://aur.archlinux.org/packages/onedrive_tray-git/).
+=======
+- This is an AUR package compile by @github/jugendhacker for ArchLinux. You can get it in [https://aur.archlinux.org/packages/onedrive_tray-git/](https://aur.archlinux.org/packages/onedrive_tray-git/).
+>>>>>>> b223d769d056cede900e79b345df0a29e8d1ff20
 
 
