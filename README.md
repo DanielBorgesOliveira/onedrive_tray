@@ -37,10 +37,10 @@ Tested with QT 5.12.6 and 5.13.0.
 First move the binary to your path:
 
 ```
-sudo cp systray /usr/local/bin/onedrive_tray
+sudo cp onedrive_tray /usr/local/bin/onedrive_tray
 ```
 
-The execute the program:
+Then execute the program:
 
 ```
 onedrive_tray --onedrive-path [path to onedrive client] --onedrive-args [onedrive client arguments].
@@ -48,6 +48,17 @@ onedrive_tray --onedrive-path [path to onedrive client] --onedrive-args [onedriv
 
 If you want the program to execute every time you log in you can put it in the auto start scripts.
 
+You can alternatively install with make:
+
+```
+sudo make install
+```
+
+This will include a systemd service that can be enabled to auto start the application:
+
+```
+systemctl enable --user onedrive_tray.service
+```
 
 # Pre-compiled Binaries
 
