@@ -23,15 +23,21 @@ int main(int argc, char *argv[])
     QCommandLineOption onedriveArgsOption(QStringList() << "a" << "onedrive-args",
 		    "Arguments passed to OneDrive", "args");
     parser.addOption(onedriveArgsOption);
+    QCommandLineOption silentFailOption(QStringList() << "s" << "silent-fail",
+            "No error message displayed when no system tray is detected");
+    parser.addOption(silentFailOption);
 
     parser.process(app);
 
     QString onedrivePath = parser.value(onedrivePathOption);
     QString onedriveArgs = parser.value(onedriveArgsOption);
+    bool silent = parser.isSet(silentFailOption);
 
 
     if (!QSystemTrayIcon::isSystemTrayAvailable()) {
-        QMessageBox::critical(0, QObject::tr("Systray"), QObject::tr("I couldn't detect any system tray on this system."));
+        if (!silent) {
+            QMessageBox::critical(0, QObject::tr("Systray"), QObject::tr("I couldn't detect any system tray on this system."));
+        }
         return 1;
     }
     QApplication::setQuitOnLastWindowClosed(false);
