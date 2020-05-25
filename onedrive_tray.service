@@ -5,9 +5,9 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
-ExecStart=/usr/local/bin/onedrive_tray
+ExecStart=/usr/local/bin/onedrive_tray -s
 Restart=on-failure
-RestartSec=3
+RestartSec=7
 RestartPreventExitStatus=3
 
 [Install]
