@@ -50,6 +50,7 @@ class Window : public QDialog
     void createActions();
     void createTrayIcon();
     void execute(QString onedrive_path, QString onedrive_arguments);
+    void openFolder();
     void restart();
     void resync();
     void terminate();
@@ -82,6 +83,7 @@ class Window : public QDialog
     QAction *quitAction;
     QAction *consoleAction;
     QAction *configurationAction;
+    QAction *openfolderAction;
     QAction *restartAction;
     QAction *resyncAction;
 

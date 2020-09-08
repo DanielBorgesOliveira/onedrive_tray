@@ -74,6 +74,35 @@ void Window::execute(QString onedrive_path, QString onedrive_arguments)
     QObject::connect(process, SIGNAL(readyReadStandardError()),this, SLOT(readStdError()) );
 }
 
+void Window::openFolder()
+{
+    QStringList arguments01 = arguments->split(" ", QString::SkipEmptyParts);
+    int index = arguments01.indexOf("--confdir", 0) + 1;
+
+    QFile file(arguments01[index] + "/config");
+
+    // Extract the onedrive folder in the config file.
+    QStringList arguments02;
+    if(file.open(QFile::ReadOnly | QFile::Text)){
+      QTextStream fileStream(&file);
+      const QString fileString = fileStream.readAll();
+      const QRegularExpression regex(R"***(.*sync_dir = \s*([^\n\r]*))***",QRegularExpression::CaseInsensitiveOption);
+      const QRegularExpressionMatch match = regex.match(fileString);
+      if(match.hasMatch()){
+        QString teste = match.captured(1);
+        teste.chop(1);
+        teste.remove(0, 1);
+        //qDebug() << "Path: " << teste;
+        arguments02.append(teste);
+      }
+    }
+
+    // Open the folder
+    QProcess *process3 = new QProcess(this);
+    QString program = "xdg-open";
+    process3->start(program, arguments02);
+}
+
 void Window::restart()
 {
     terminal->appendPlainText("Reiniciando o OneDrive.");
@@ -240,8 +269,11 @@ void Window::createActions()
     consoleAction = new QAction(tr("&Log Console"), this);
     connect(consoleAction, &QAction::triggered, this, &QWidget::showNormal);
 
-    configurationAction = new QAction(tr("&Configuration"), this);
-    connect(configurationAction, SIGNAL(triggered()), this, SLOT(OpenConfigurationWindow()));
+    openfolderAction = new QAction(tr("&Open Folder"), this);
+    connect(openfolderAction, &QAction::triggered, this, &Window::openFolder);
+
+    //configurationAction = new QAction(tr("&Configuration"), this);
+    //connect(configurationAction, SIGNAL(triggered()), this, SLOT(OpenConfigurationWindow()));
 
     restartAction = new QAction(tr("&Restart"), this);
     connect(restartAction, &QAction::triggered, this, &Window::restart);
@@ -259,7 +291,8 @@ void Window::createTrayIcon()
 {
     trayIconMenu = new QMenu(this);
     trayIconMenu->addAction(consoleAction);
-    trayIconMenu->addAction(configurationAction);
+    trayIconMenu->addAction(openfolderAction);
+    //trayIconMenu->addAction(configurationAction);
     trayIconMenu->addAction(restartAction);
     trayIconMenu->addAction(resyncAction);
     trayIconMenu->addSeparator();
