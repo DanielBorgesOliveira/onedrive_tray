@@ -60,10 +60,23 @@ This will include a systemd service that can be enabled to auto start the applic
 systemctl enable --user onedrive_tray.service
 ```
 
+## Configure proxy settings
+
+- If you execute the program directly from the command line, you can **set environment variables: "HTTP_PROXY" and "HTTPS_PROXY"** to let onedrive subprocess inherit these settings because of QT features.
+
+- If you use the systemd service, you can achieve this by editing the "/usr/lib/systemd/user/onedrive_tray.service" file and add (please properly replace "ip.address:port" with your proxy settings)
+
+  ```
+  Environment="HTTP_PROXY=http://ip.address:port"
+  Environment="HTTPS_PROXY=http://ip.address:port"
+  ```
+
+  to the "[Service]" section of the service unit file.
+  
+- Reference: Official onedrive_abraunegg document ([Link](https://github.com/abraunegg/onedrive/blob/master/docs/USAGE.md#access-onedrive-service-through-a-proxy)).
+
 # Pre-compiled Binaries
 
 If you do not have the necessary knowledge to compile a Linux program or simply you have no patience to compile another package you can download a pre-compiled binary developed by the community. Bellow, there are some packages available.
 
 - This is an AUR package compile by [jugendhacker](https://github.com/jugendhacker) for ArchLinux. You can get it in [https://aur.archlinux.org/packages/onedrive_tray-git/](https://aur.archlinux.org/packages/onedrive_tray-git/).
-
-
