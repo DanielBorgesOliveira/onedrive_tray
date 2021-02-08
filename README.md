@@ -64,7 +64,7 @@ systemctl enable --user onedrive_tray.service
 
 - If you execute the program directly from the command line, you can **set environment variables: "HTTP_PROXY" and "HTTPS_PROXY"** to let onedrive subprocess inherit these settings because of QT features.
 
-- If you use the systemd use service, you can achieve this by editing the "/usr/lib/systemd/user/onedrive_tray.service" file and add (please properly replace "ip.address:port" with your proxy settings)
+- If you use the systemd service, you can achieve this by editing the "/usr/lib/systemd/user/onedrive_tray.service" file and add (please properly replace "ip.address:port" with your proxy settings)
 
   ```
   Environment="HTTP_PROXY=http://ip.address:port"
