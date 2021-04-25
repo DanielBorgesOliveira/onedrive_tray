@@ -114,6 +114,16 @@ void Window::restart()
     terminal->appendPlainText("OneDrive reiniciado com sucesso.");
 }
 
+void Window::iconColor(QString color)
+{
+    QString path = ":/images/onedrive-";
+    path.append(color);
+    path.append(".png");
+    qDebug() << "Icon path: " << path;
+    QIcon icon = QIcon(path.toLower());
+    trayIcon->setIcon(icon);
+}
+
 void Window::resync()
 {
     terminal->appendPlainText("Resynchronizing OneDrive...");
@@ -280,6 +290,13 @@ void Window::createActions()
 
     resyncAction = new QAction(tr("&Resync"), this);
     connect(resyncAction, &QAction::triggered, this, &Window::resync);
+
+    iconColorRedAction = new QAction(tr("&Red"), this);
+    iconColorGreenAction = new QAction(tr("&Green"), this);
+    iconColorBlueAction = new QAction(tr("&Blue"), this);
+    connect(iconColorRedAction,  &QAction::triggered, this, [this]{ Window::iconColor("Red"); });
+    connect(iconColorGreenAction,  &QAction::triggered, this, [this]{ Window::iconColor("Green"); });
+    connect(iconColorBlueAction,  &QAction::triggered, this, [this]{ Window::iconColor("Blue"); });
 }
 
 void Window::OpenConfigurationWindow()
@@ -291,16 +308,28 @@ void Window::createTrayIcon()
 {
     trayIconMenu = new QMenu(this);
     trayIconMenu->addAction(consoleAction);
+
     trayIconMenu->addAction(openfolderAction);
+
     //trayIconMenu->addAction(configurationAction);
+    //
     trayIconMenu->addAction(restartAction);
+
     trayIconMenu->addAction(resyncAction);
+
+    trayIconMenu->addSeparator();
+    QMenu* submenuColor = trayIconMenu->addMenu( "Icon Color" );
+    submenuColor->addAction(iconColorRedAction);
+    submenuColor->addAction(iconColorGreenAction);
+    submenuColor->addAction(iconColorBlueAction);
+
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(quitAction);
 
-    trayIcon = new QSystemTrayIcon(QIcon(":/images/onedrive.png"), this);
+    trayIcon = new QSystemTrayIcon(QIcon(":/images/onedrive-blue.png"), this);
     trayIcon->setContextMenu(trayIconMenu);
     trayIcon->show();
+
 }
 
 #endif

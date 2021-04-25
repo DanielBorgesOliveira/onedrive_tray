@@ -1,5 +1,7 @@
-<!DOCTYPE RCC><RCC version="1.0">
-<qresource prefix="/">
-   <file>images/onedrive.png</file>
-</qresource>
+<RCC>
+    <qresource prefix="/">
+        <file>images/onedrive-red.png</file>
+        <file>images/onedrive-blue.png</file>
+        <file>images/onedrive-green.png</file>
+    </qresource>
 </RCC>

@@ -53,6 +53,7 @@ class Window : public QDialog
     void openFolder();
     void restart();
     void resync();
+    void iconColor(QString);
     void terminate();
     void createConfigurationGroupBox();
 
@@ -86,6 +87,10 @@ class Window : public QDialog
     QAction *openfolderAction;
     QAction *restartAction;
     QAction *resyncAction;
+    QAction *iconColorRedAction;
+    QAction *iconColorGreenAction;
+    QAction *iconColorBlueAction;
+    QAction *iconColorAction;
 
     QSystemTrayIcon *trayIcon;
     QMenu *trayIconMenu;
