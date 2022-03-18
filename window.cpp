@@ -294,9 +294,11 @@ void Window::createActions()
     iconColorRedAction = new QAction(tr("&Red"), this);
     iconColorGreenAction = new QAction(tr("&Green"), this);
     iconColorBlueAction = new QAction(tr("&Blue"), this);
+    iconColorGreyAction = new QAction(tr("Gr&ey"), this);
     connect(iconColorRedAction,  &QAction::triggered, this, [this]{ Window::iconColor("Red"); });
     connect(iconColorGreenAction,  &QAction::triggered, this, [this]{ Window::iconColor("Green"); });
     connect(iconColorBlueAction,  &QAction::triggered, this, [this]{ Window::iconColor("Blue"); });
+    connect(iconColorGreyAction,  &QAction::triggered, this, [this]{ Window::iconColor("Grey"); });
 }
 
 void Window::OpenConfigurationWindow()
@@ -322,6 +324,7 @@ void Window::createTrayIcon()
     submenuColor->addAction(iconColorRedAction);
     submenuColor->addAction(iconColorGreenAction);
     submenuColor->addAction(iconColorBlueAction);
+    submenuColor->addAction(iconColorGreyAction);
 
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(quitAction);

@@ -3,5 +3,6 @@
         <file>images/onedrive-red.png</file>
         <file>images/onedrive-blue.png</file>
         <file>images/onedrive-green.png</file>
+        <file>images/onedrive-grey.png</file>
     </qresource>
 </RCC>

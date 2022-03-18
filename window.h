@@ -90,6 +90,7 @@ class Window : public QDialog
     QAction *iconColorRedAction;
     QAction *iconColorGreenAction;
     QAction *iconColorBlueAction;
+    QAction *iconColorGreyAction;
     QAction *iconColorAction;
 
     QSystemTrayIcon *trayIcon;
