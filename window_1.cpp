@@ -24,7 +24,7 @@ Window_1::Window_1()
   mainLayout->addWidget(messageGroupBox);
   setLayout(mainLayout);
 
-  setWindowTitle(tr("OneDrive Configuration"));
+  setWindowTitle(tr("Configuration..."));
   resize(400, 300);
 }
 
@@ -37,7 +37,7 @@ void Window_1::closeEvent(QCloseEvent *event)
   },
   #endif
   if (trayIcon->isVisible()) {
-      QMessageBox::information(this, tr("Systray"),
+      QMessageBox::information(this, tr("OneDrive"),
                                tr("The program will keep running in the "
                                   "system tray. To terminate the program, "
                                   "choose <b>Quit</b> in the context menu "
@@ -49,7 +49,7 @@ void Window_1::closeEvent(QCloseEvent *event)
 
 void Window_1::createMessageGroupBox()
 {
-	messageGroupBox = new QGroupBox(tr("OneDrive Configuration"));
+	messageGroupBox = new QGroupBox(tr("Configuration..."));
 
 	/*
 	typeLabel = new QLabel(tr("Type:"));
