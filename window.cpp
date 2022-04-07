@@ -79,7 +79,7 @@ void Window::execute(QString onedrive_path, QString onedrive_arguments)
     process->setProgram(onedrive_path);
     process->setArguments(arguments);
 
-    //process->start();
+    process->start();
 
     QObject::connect(process, SIGNAL(readyReadStandardOutput()),this, SLOT(readStdOutput()) );
     QObject::connect(process, SIGNAL(readyReadStandardError()),this, SLOT(readStdError()) );
