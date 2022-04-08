@@ -54,7 +54,6 @@ class Window : public QDialog
     void moreColors();
 
   private:
-    //void initializeColorsText();  
     void createIconGroupBox();
     void createMessageGroupBox();
     void createActions();
