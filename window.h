@@ -12,8 +12,15 @@
 
 #include "window_1.h"
 
+struct AppConfiguration
+{
+  QColor iconColor;
+  QSize size;
+  QPoint pos;
+};
+
 QT_BEGIN_NAMESPACE
-class QAction;
+class QAction; class QActionGroup;
 class QCheckBox;class QComboBox;
 class QGroupBox;
 class QLabel;
@@ -43,6 +50,8 @@ class Window : public QDialog
     void readStdOutput();
     void readStdError();
     void OpenConfigurationWindow();
+    void defineTrayIcon(const QColor &color);
+    void moreColors();
 
   private:
     void createIconGroupBox();
@@ -52,12 +61,19 @@ class Window : public QDialog
     void execute(QString onedrive_path, QString onedrive_arguments);
     void openFolder();
     void restart();
-    void resync();
-    void iconColor(QString);
-    void terminate();
+    void suspend();
+    void changeTrayIcon(bool forceChange, bool sync);
+    void quit();
+    void about();
     void createConfigurationGroupBox();
+    void loadSettings();
+    void saveSettings();
+    void eventsInfo(QString info);
+    void eventsError(QString error);
+    void eventsOperation(QString Operation, QString fileName);
 
     bool auto_hide;
+    bool isSyncing;
 
     QGroupBox *iconGroupBox;
     QLabel *iconLabel;
@@ -70,7 +86,8 @@ class Window : public QDialog
     QLabel *durationLabel;
     QLabel *durationWarningLabel;
     QLabel *titleLabel;
-    QPlainTextEdit *terminal;
+    QPlainTextEdit *events;
+    QString *stdOutputString;
     QLabel *bodyLabel;
     QComboBox *typeComboBox;
     QSpinBox *durationSpinBox;
@@ -78,25 +95,24 @@ class Window : public QDialog
     QTextEdit *bodyEdit;
     QPushButton *showMessageButton;
 
-    QAction *minimizeAction;
-    QAction *maximizeAction;
-    QAction *restoreAction;
-    QAction *quitAction;
+    QAction *freeSpaceAction;
+    QAction *statusAction;
     QAction *consoleAction;
     QAction *configurationAction;
     QAction *openfolderAction;
     QAction *restartAction;
-    QAction *resyncAction;
-    QAction *iconColorRedAction;
-    QAction *iconColorGreenAction;
-    QAction *iconColorBlueAction;
-    QAction *iconColorGreyAction;
-    QAction *iconColorAction;
-
+    QAction *suspendAction;
+    QActionGroup *iconColorGroup;
+    QAction *quitAction;
+    QAction *aboutAction;
+  
     QSystemTrayIcon *trayIcon;
     QMenu *trayIconMenu;
+    QString *currentIconPath;
 
     Window_1 *ConfigurationWindow;
+
+    AppConfiguration *appConfig;
 };
 //! [0]
 

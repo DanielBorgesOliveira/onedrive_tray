@@ -40,6 +40,12 @@ First move the binary to your path:
 sudo cp onedrive_tray /usr/local/bin/onedrive_tray
 ```
 
+If exists, move to your path the translation file corresponding to your country. For example for french users :
+
+```
+sudo cp onedrive_tray_fr.qm /usr/local/bin/onedrive_tray_fr.qm
+```
+
 Then execute the program:
 
 ```
@@ -59,6 +65,28 @@ This will include a systemd service that can be enabled to auto start the applic
 ```
 systemctl enable --user onedrive_tray.service
 ```
+
+## Create a translation file
+
+- Modify the file systray.pro : on the line TRANSLATIONS, add the name of a new translation file (onedrive_tray_xx.ts where xx corresponds to your country).
+
+- In a terminal, go to the path where is your source code files and execute the command
+
+```
+lupdate systray.pro
+```
+
+This command initiates the onedrive_tray_xx.ts file.
+
+- Now execute the command
+
+```
+linguist
+```
+
+This command launches the application "linguist" to write the translations. First open your onedrive_tray_xx.ts file and write the translations. When your translations are done, save the file and release the file (menu File). The release action create the onedrive_tray_xx.qm file.
+
+For more informations about the translation in Qt, you can visit the [Qt documentation](https://doc.qt.io/qt-5/qtlinguist-index.html).
 
 ## Configure proxy settings
 

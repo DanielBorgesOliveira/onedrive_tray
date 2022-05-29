@@ -11,8 +11,10 @@ INSTALLS += target
 INSTALLS += unitfile
 
 # Input
-HEADERS += window.h window_1.h
-SOURCES += main.cpp window.cpp window_1.cpp
+HEADERS += window.h window_1.h iconinfo.h morecolors.h
+SOURCES += main.cpp window.cpp window_1.cpp iconinfo.cpp morecolors.cpp
 RESOURCES += systray.qrc
 
 QT += widgets
+
+TRANSLATIONS += onedrive_tray_en.ts onedrive_tray_fr.ts
