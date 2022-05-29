@@ -535,6 +535,17 @@ void Window::createTrayIcon()
     trayIcon = new QSystemTrayIcon(this);
     currentIconPath = new QString;
     changeTrayIcon(true, false);
+
+    QString iconPath;
+    if (QPalette().color(QPalette::WindowText).value() > QPalette().color(QPalette::Window).value()) {
+        // Dark theme.
+        iconPath = ":/images/onedrive-grey.png";
+    } else {
+        iconPath = ":/images/onedrive-blue.png";
+    }
+
+    trayIcon = new QSystemTrayIcon(QIcon(/*":/images/onedrive-blue.png"*/iconPath), this);
+
     trayIcon->setContextMenu(trayIconMenu);
     trayIcon->show();
     
