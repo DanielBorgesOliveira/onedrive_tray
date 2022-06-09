@@ -103,7 +103,7 @@ void Window::openFolder()
     
     // Extract the onedrive folder in the config file.
     QSettings settings(onedriveConfigFileName, QSettings::IniFormat);
-    QString syncDirString = settings.value("sync_dir", "").toString();
+    QString syncDirString = settings.value("sync_dir", "~/OneDrive").toString();
     if (!syncDirString.isEmpty())
     {
         // Replace ~/ by home user directory
@@ -113,8 +113,6 @@ void Window::openFolder()
         QProcess *openFolderProcess = new QProcess(this);
         openFolderProcess->start("xdg-open", QStringList()<<syncDirString);
     }
-    else
-        QMessageBox::warning(this, "OneDrive", tr("Local OneDrive directory not found !"));
 }
 
 void Window::suspend()
