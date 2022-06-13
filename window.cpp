@@ -93,7 +93,7 @@ void Window::openFolder()
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
     QStringList arguments01 = arguments->split(" ", QString::SkipEmptyParts);
 #else
-    QStringList arguments01 = arguments->split(" ", Qt::SkipEmptyParts);
+    QStringList arguments01 = arguments->split(QRegularExpression("[ =]"), Qt::SkipEmptyParts);
 #endif
     int index = arguments01.indexOf("--confdir", 0) + 1;
     if (index > 0)
