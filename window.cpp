@@ -96,8 +96,11 @@ void Window::openFolder()
     QStringList arguments01 = arguments->split(QRegularExpression("[ =]"), Qt::SkipEmptyParts);
 #endif
     int index = arguments01.indexOf("--confdir", 0) + 1;
-    if (index > 0)
+    if (index > 0){
         onedriveConfigFileName = arguments01[index] + "/config";
+        if (onedriveConfigFileName.indexOf("~/") == 0)
+            onedriveConfigFileName.replace(0, 1, QDir::homePath());
+    }
     else
         onedriveConfigFileName = QDir::homePath() + "/.config/onedrive/config";
     
