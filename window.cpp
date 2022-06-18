@@ -93,17 +93,20 @@ void Window::openFolder()
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
     QStringList arguments01 = arguments->split(" ", QString::SkipEmptyParts);
 #else
-    QStringList arguments01 = arguments->split(" ", Qt::SkipEmptyParts);
+    QStringList arguments01 = arguments->split(QRegularExpression("[ =]"), Qt::SkipEmptyParts);
 #endif
     int index = arguments01.indexOf("--confdir", 0) + 1;
-    if (index > 0)
+    if (index > 0){
         onedriveConfigFileName = arguments01[index] + "/config";
+        if (onedriveConfigFileName.indexOf("~/") == 0)
+            onedriveConfigFileName.replace(0, 1, QDir::homePath());
+    }
     else
         onedriveConfigFileName = QDir::homePath() + "/.config/onedrive/config";
     
     // Extract the onedrive folder in the config file.
     QSettings settings(onedriveConfigFileName, QSettings::IniFormat);
-    QString syncDirString = settings.value("sync_dir", "").toString();
+    QString syncDirString = settings.value("sync_dir", "~/OneDrive").toString();
     if (!syncDirString.isEmpty())
     {
         // Replace ~/ by home user directory
@@ -113,8 +116,6 @@ void Window::openFolder()
         QProcess *openFolderProcess = new QProcess(this);
         openFolderProcess->start("xdg-open", QStringList()<<syncDirString);
     }
-    else
-        QMessageBox::warning(this, "OneDrive", tr("Local OneDrive directory not found !"));
 }
 
 void Window::suspend()
