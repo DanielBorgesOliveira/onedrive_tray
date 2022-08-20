@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>images/OneDrive.png</file>
-        <file>images/OneDrive-sync.png</file>
+        <file>images/OneDrive.svg</file>
+        <file>images/OneDrive-sync.svg</file>
     </qresource>
 </RCC>
