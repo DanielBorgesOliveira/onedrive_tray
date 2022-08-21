@@ -29,9 +29,9 @@ Window::Window(QString onedrive_path, QString onedrive_arguments)
     // in another parts of the program.
     arguments = &onedrive_arguments;
     path = &onedrive_path;
-    
+
     ConfigurationWindow = new Window_1;
-    
+
     // Used to show the window in odd clicks and hide in even.
     auto_hide = true;
     // Used to know if OneDrive is syncing or not
@@ -39,7 +39,7 @@ Window::Window(QString onedrive_path, QString onedrive_arguments)
 
     // Load the settings of the application
     loadSettings();
-    
+
     createMessageGroupBox();
     createActions();
     createTrayIcon();
@@ -86,7 +86,7 @@ void Window::execute(QString onedrive_path, QString onedrive_arguments)
 }
 
 void Window::openFolder()
-// Open the OneDrive local folder 
+// Open the OneDrive local folder
 {
     // Define the OneDrive config filename
     QString onedriveConfigFileName("");
@@ -98,12 +98,13 @@ void Window::openFolder()
     int index = arguments01.indexOf("--confdir", 0) + 1;
     if (index > 0){
         onedriveConfigFileName = arguments01[index] + "/config";
+        onedriveConfigFileName.remove('\"');
         if (onedriveConfigFileName.indexOf("~/") == 0)
             onedriveConfigFileName.replace(0, 1, QDir::homePath());
     }
     else
         onedriveConfigFileName = QDir::homePath() + "/.config/onedrive/config";
-    
+
     // Extract the onedrive folder in the config file.
     QSettings settings(onedriveConfigFileName, QSettings::IniFormat);
     QString syncDirString = settings.value("sync_dir", "~/OneDrive").toString();
@@ -163,7 +164,7 @@ void Window::moreColors()
 void Window::changeTrayIcon(bool forceChange, bool sync)
 // Change the icon of the tray icon depending on the context (is sincing or not)
 {
-    // do not change the tray icon if is currently syncing and continue to sync 
+    // do not change the tray icon if is currently syncing and continue to sync
     if (forceChange || !(isSyncing && sync))
     {
         if (sync || (isSyncing && forceChange))
@@ -185,7 +186,7 @@ void Window::readStdOutput()
         changeTrayIcon(false, true);
         isSyncing = true;
     }
-    
+
     QByteArray strdata = process->readAllStandardOutput();
     *stdOutputString = *stdOutputString + QString(strdata);
 
@@ -243,7 +244,7 @@ void Window::readStdOutput()
             else if(listLine[i].left(7) == "Moving ")
             {
                 operation = tr("Rename");
-                re.setPattern("^Moving (.+) to (.+)$"); 
+                re.setPattern("^Moving (.+) to (.+)$");
                 match = re.match(listLine[i]);
                 if (match.hasMatch())
                     fileName = match.captured(1) + " --> " + match.captured(2);
@@ -255,7 +256,7 @@ void Window::readStdOutput()
                 if (listLine[i].contains("Deleting"))
                 {
                     operation = tr("Deleting");
-                    re.setPattern("( item from OneDrive:| item) (.+)$"); 
+                    re.setPattern("( item from OneDrive:| item) (.+)$");
                     match = re.match(listLine[i]);
                     if (match.hasMatch())
                         fileName = match.captured(2);
@@ -264,29 +265,29 @@ void Window::readStdOutput()
                 else if (listLine[i].contains("Uploading"))
                 {
                     operation = tr("Uploading");
-                    re.setPattern("(Uploading file|Uploading new file|Uploading modified file) (.+) \.\.\."); 
+                    re.setPattern("(Uploading file|Uploading new file|Uploading modified file) (.+) \.\.\.");
                     match = re.match(listLine[i]);
                     if (match.hasMatch())
                     {
                         fileName = match.captured(2);
                         if (fileName.endsWith(" ..."))
-                            fileName.truncate(fileName.size() - 4); 
+                            fileName.truncate(fileName.size() - 4);
                     }
                 }
                 else if (listLine[i].contains("Downloading"))
                 {
                     operation = tr("Downloading");
-                    re.setPattern("(Downloading file|Downloading new file|Downloading modified file) (.+) \.\.\."); 
+                    re.setPattern("(Downloading file|Downloading new file|Downloading modified file) (.+) \.\.\.");
                     match = re.match(listLine[i]);
                     if (match.hasMatch())
                     {
                         fileName = match.captured(2);
                         if (fileName.endsWith(" ..."))
-                            fileName.truncate(fileName.size() - 4); 
+                            fileName.truncate(fileName.size() - 4);
                     }
                 }
             }
-            
+
             if (!operation.isEmpty())
                 eventsOperation(operation, fileName);
 
@@ -296,7 +297,7 @@ void Window::readStdOutput()
                 changeTrayIcon(false, false);
                 isSyncing = false;
             }
-                
+
             operation = "";
             fileName = "";
         }
@@ -319,7 +320,7 @@ void Window::closeEvent(QCloseEvent *event)
       return;
   },
   #endif
-  if (trayIcon->isVisible()) 
+  if (trayIcon->isVisible())
   {
       appConfig->size = size();
       appConfig->pos = pos();
@@ -483,7 +484,7 @@ void Window::createActions()
         }
         // TO DO : le menu s'affiche trop grand
         iconColorAction->setIcon(IconInfo::changeColorIcon(IconInfo::syncingOnedriveIconPathName(), color));
-        
+
         connect(iconColorAction,  &QAction::triggered, this, [this, color]{ defineTrayIcon(color); });
         iconColorGroup->addAction(iconColorAction);
     }
@@ -549,7 +550,7 @@ void Window::createTrayIcon()
 
     trayIcon->setContextMenu(trayIconMenu);
     trayIcon->show();
-    
+
     connect(trayIcon, &QSystemTrayIcon::activated, this, &Window::iconActivated);
 }
 
@@ -560,7 +561,7 @@ void Window::loadSettings()
 // The function create it automatically if not exists.
 {
     appConfig = new AppConfiguration;
-    QSettings settings;  
+    QSettings settings;
     appConfig->iconColor = settings.value("Tray/IconColor", QColor(Qt::blue)).value<QColor>();
     settings.beginGroup("RecentEventWindow");
     appConfig->size = settings.value("Size", QSize(400, 300)).toSize();
@@ -581,5 +582,5 @@ void Window::saveSettings()
     settings.endGroup();
 }
 
-#endif 
+#endif
 
