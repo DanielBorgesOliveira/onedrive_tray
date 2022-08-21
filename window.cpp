@@ -344,9 +344,9 @@ void Window::about()
                                 "<b>" + qApp->applicationName() + " " + qApp->applicationVersion() + "</b><br><br>" +
                                 tr("Run and control OneDrive from the system tray.<br>"
                                 "This is a simple program to create a system tray icon and display program status for onedrive client developed by abraunegg.<br><br>"
-                                "Click with the left mouse button or double-click (depends on Linux distro) and the program shows the synchronization progress. "
-                                "Click with the right mouse button and a menu with the available options is shown. "
-                                "Click with the mid mouse button and the program shows the PID of the onedrive client.<br><br>"
+
+                                "To see the sincronization progress, change icon color, open onedriver, etc. you can click in the icon on system tray.<br><br>"
+
                                 "The program was written in C++ using lib Qt 5.13.0.<br><br>"
                                 "To use the program you must first compile and install the onedrive client available at https://github.com/abraunegg/onedrive.<br><br>"
                                 "So many thanks to<ul>"
