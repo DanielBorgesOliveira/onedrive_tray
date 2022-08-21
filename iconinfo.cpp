@@ -8,9 +8,9 @@ IconInfo::IconInfo(QObject* parent) : QObject(parent) {}
 
 IconInfo::~IconInfo(){}
 
-const QString IconInfo::m_onedriveIconPathName = QString(":/images/OneDrive.png");
+const QString IconInfo::m_onedriveIconPathName = QString(":/images/OneDrive.svg");
 
-const QString IconInfo::m_syncingOnedriveIconPathName = QString(":/images/OneDrive-sync.png");
+const QString IconInfo::m_syncingOnedriveIconPathName = QString(":/images/OneDrive-sync.svg");
 
 QStringList IconInfo::defaultColorsText()
 {
