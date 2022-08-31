@@ -172,6 +172,7 @@ void Window::changeTrayIcon(bool forceChange, bool sync)
         else
             *currentIconPath = IconInfo::onedriveIconPathName();
         trayIcon->setIcon(IconInfo::changeColorIcon(*currentIconPath, appConfig->iconColor));
+        saveSettings();
     }
 }
 
