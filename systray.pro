@@ -17,4 +17,4 @@ RESOURCES += systray.qrc
 
 QT += widgets
 
-TRANSLATIONS += onedrive_tray_en.ts onedrive_tray_fr.ts onedrive_tray_es.ts onedrive_tray_nl.ts
+TRANSLATIONS += onedrive_tray_en.ts onedrive_tray_fr.ts onedrive_tray_es.ts onedrive_tray_nl.ts onedrive_tray_it.ts
