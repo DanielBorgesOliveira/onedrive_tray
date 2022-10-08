@@ -64,7 +64,7 @@
     <name>Window</name>
     <message>
         <location filename="window.cpp" line="51"/>
-        <location filename="window.cpp" line="435"/>
+        <location filename="window.cpp" line="437"/>
         <source>Recent events</source>
         <translation>Jüngste Ereignisse</translation>
     </message>
@@ -74,134 +74,138 @@
         <translation>OneDrive gestartet</translation>
     </message>
     <message>
-        <location filename="window.cpp" line="131"/>
         <location filename="window.cpp" line="132"/>
+        <location filename="window.cpp" line="133"/>
         <source>Synchronization suspended</source>
         <translation>Synchronisierung angehalten</translation>
     </message>
     <message>
-        <location filename="window.cpp" line="142"/>
+        <location filename="window.cpp" line="143"/>
         <source>Synchronization restarted</source>
         <translation>Synchronisierung neu gestartet</translation>
     </message>
     <message>
-        <location filename="window.cpp" line="184"/>
+        <location filename="window.cpp" line="186"/>
         <source>Synchronizing...</source>
         <translation>Synchronisiere...</translation>
     </message>
     <message>
-        <location filename="window.cpp" line="217"/>
-        <location filename="window.cpp" line="450"/>
+        <location filename="window.cpp" line="219"/>
+        <location filename="window.cpp" line="452"/>
         <source>Free space: </source>
         <translation>Freier Speicherplatz: </translation>
     </message>
     <message>
-        <location filename="window.cpp" line="228"/>
+        <location filename="window.cpp" line="230"/>
         <source>Creating local directory</source>
         <translation>Erstelle lokales Verzeichnis</translation>
     </message>
     <message>
-        <location filename="window.cpp" line="236"/>
+        <location filename="window.cpp" line="238"/>
         <source>Create directory</source>
         <translation>Erstelle Verzeichnis</translation>
     </message>
     <message>
-        <location filename="window.cpp" line="245"/>
+        <location filename="window.cpp" line="247"/>
         <source>Rename</source>
         <translation>Umbenennen</translation>
     </message>
     <message>
-        <location filename="window.cpp" line="257"/>
+        <location filename="window.cpp" line="259"/>
         <source>Deleting</source>
         <translation>Löschen</translation>
     </message>
     <message>
-        <location filename="window.cpp" line="266"/>
+        <location filename="window.cpp" line="268"/>
         <source>Uploading</source>
         <translation>Hochladen</translation>
     </message>
     <message>
-        <location filename="window.cpp" line="278"/>
+        <location filename="window.cpp" line="280"/>
         <source>Downloading</source>
         <translation>Herunterladen</translation>
     </message>
     <message>
-        <location filename="window.cpp" line="295"/>
+        <location filename="window.cpp" line="297"/>
         <source>Sync complete</source>
         <translation>Synchronisation abgeschlossen</translation>
     </message>
     <message>
-        <location filename="window.cpp" line="342"/>
+        <location filename="window.cpp" line="344"/>
         <source>About</source>
         <translation>Über</translation>
     </message>
     <message>
-        <location filename="window.cpp" line="344"/>
-        <source>Run and control OneDrive from the system tray.&lt;br&gt;This is a simple program to create a system tray icon and display program status for onedrive client developed by abraunegg.&lt;br&gt;&lt;br&gt;Click with the left mouse button or double-click (depends on Linux distro) and the program shows the synchronization progress. Click with the right mouse button and a menu with the available options is shown. Click with the mid mouse button and the program shows the PID of the onedrive client.&lt;br&gt;&lt;br&gt;The program was written in C++ using lib Qt 5.13.0.&lt;br&gt;&lt;br&gt;To use the program you must first compile and install the onedrive client available at https://github.com/abraunegg/onedrive.&lt;br&gt;&lt;br&gt;So many thanks to&lt;ul&gt;&lt;li&gt;abraunegg (https://github.com/abraunegg/onedrive)&lt;/li&gt;&lt;li&gt;Daniel Borges Oliveira who developed the first version of this program (https://github.com/DanielBorgesOliveira/onedrive_tray)&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;Feel free to clone and improve this program (https://github.com/bforest76/onedrive_tray).&lt;br&gt;</source>
+        <location filename="window.cpp" line="346"/>
+        <source>Run and control OneDrive from the system tray.&lt;br&gt;This is a simple program to create a system tray icon and display program status for onedrive client developed by abraunegg.&lt;br&gt;&lt;br&gt;To see the sincronization progress, change icon color, open onedriver, etc. you can click in the icon on system tray.&lt;br&gt;&lt;br&gt;The program was written in C++ using lib Qt 5.13.0.&lt;br&gt;&lt;br&gt;To use the program you must first compile and install the onedrive client available at https://github.com/abraunegg/onedrive.&lt;br&gt;&lt;br&gt;So many thanks to&lt;ul&gt;&lt;li&gt;abraunegg (https://github.com/abraunegg/onedrive)&lt;/li&gt;&lt;li&gt;Daniel Borges Oliveira who developed the first version of this program (https://github.com/DanielBorgesOliveira/onedrive_tray)&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;Feel free to clone and improve this program (https://github.com/bforest76/onedrive_tray).&lt;br&gt;</source>
         <translation>Starten und steuern von OneDrive aus der Taskleiste.&lt;br&gt;Dies ist ein einfaches Programm, um ein System-Tray-Symbol zu erstellen und den Programmstatus für den von abraunegg entwickelten Onedrive-Client anzuzeigen.&lt;br&gt;&lt;br&gt;Klicke mit der linken Maustaste oder doppelklicke (je nach Linux-Distribution) und das Programm zeigt den Fortschritt der Synchronisierung an. Klicke mit der rechten Maustaste, um ein Menü mit den verfügbaren Optionen anzuzeigen. Klicke mit der mittleren Maustaste, um PID des Onedrive-Clients anzuzeigen.&lt;br&gt;&lt;br&gt;Das Programm wurde in C++ unter Verwendung der Bibliothek Qt 5.13.0 geschrieben.&lt;br&gt;&lt;br&gt;Um das Programm zu verwenden, muss zunächst der OneDrive-Client kompiliert und installiert werden, der unter https://github.com/abraunegg/onedrive verfügbar ist.&lt;br&gt;&lt;br&gt;Vielen Dank also an&lt;ul&gt;&lt;li&gt;abraunegg (https://github.com/abraunegg/onedrive)&lt;/li&gt;&lt;li&gt;Daniel Borges Oliveira, der die erste Version dieses Programms entwickelt hat (https://github.com/DanielBorgesOliveira/onedrive_tray)&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;Es steht jedem frei, dieses Programm zu klonen und zu verbessern (https://github.com/bforest76/onedrive_tray).&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="window.cpp" line="385"/>
+        <source>Run and control OneDrive from the system tray.&lt;br&gt;This is a simple program to create a system tray icon and display program status for onedrive client developed by abraunegg.&lt;br&gt;&lt;br&gt;Click with the left mouse button or double-click (depends on Linux distro) and the program shows the synchronization progress. Click with the right mouse button and a menu with the available options is shown. Click with the mid mouse button and the program shows the PID of the onedrive client.&lt;br&gt;&lt;br&gt;The program was written in C++ using lib Qt 5.13.0.&lt;br&gt;&lt;br&gt;To use the program you must first compile and install the onedrive client available at https://github.com/abraunegg/onedrive.&lt;br&gt;&lt;br&gt;So many thanks to&lt;ul&gt;&lt;li&gt;abraunegg (https://github.com/abraunegg/onedrive)&lt;/li&gt;&lt;li&gt;Daniel Borges Oliveira who developed the first version of this program (https://github.com/DanielBorgesOliveira/onedrive_tray)&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;Feel free to clone and improve this program (https://github.com/bforest76/onedrive_tray).&lt;br&gt;</source>
+        <translation type="vanished">Starten und steuern von OneDrive aus der Taskleiste.&lt;br&gt;Dies ist ein einfaches Programm, um ein System-Tray-Symbol zu erstellen und den Programmstatus für den von abraunegg entwickelten Onedrive-Client anzuzeigen.&lt;br&gt;&lt;br&gt;Klicke mit der linken Maustaste oder doppelklicke (je nach Linux-Distribution) und das Programm zeigt den Fortschritt der Synchronisierung an. Klicke mit der rechten Maustaste, um ein Menü mit den verfügbaren Optionen anzuzeigen. Klicke mit der mittleren Maustaste, um PID des Onedrive-Clients anzuzeigen.&lt;br&gt;&lt;br&gt;Das Programm wurde in C++ unter Verwendung der Bibliothek Qt 5.13.0 geschrieben.&lt;br&gt;&lt;br&gt;Um das Programm zu verwenden, muss zunächst der OneDrive-Client kompiliert und installiert werden, der unter https://github.com/abraunegg/onedrive verfügbar ist.&lt;br&gt;&lt;br&gt;Vielen Dank also an&lt;ul&gt;&lt;li&gt;abraunegg (https://github.com/abraunegg/onedrive)&lt;/li&gt;&lt;li&gt;Daniel Borges Oliveira, der die erste Version dieses Programms entwickelt hat (https://github.com/DanielBorgesOliveira/onedrive_tray)&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;Es steht jedem frei, dieses Programm zu klonen und zu verbessern (https://github.com/bforest76/onedrive_tray).&lt;br&gt;</translation>
+    </message>
+    <message>
+        <location filename="window.cpp" line="387"/>
         <source>OneDrive is running with the PID </source>
         <translation>OneDrive läuft mit PID </translation>
     </message>
     <message>
-        <location filename="window.cpp" line="391"/>
+        <location filename="window.cpp" line="393"/>
         <source>OneDrive is not running by some reason. Please restart the program.</source>
         <translation>OneDrive wird aus irgendeinem Grund nicht ausgeführt. Bitte starte das Programm neu.</translation>
     </message>
     <message>
-        <location filename="window.cpp" line="401"/>
+        <location filename="window.cpp" line="403"/>
         <source>OneDrive</source>
         <translation>OneDrive</translation>
     </message>
     <message>
-        <location filename="window.cpp" line="443"/>
+        <location filename="window.cpp" line="445"/>
         <source>Show icon</source>
         <translation>Icon anzeigen</translation>
     </message>
     <message>
-        <location filename="window.cpp" line="453"/>
+        <location filename="window.cpp" line="455"/>
         <source>Not started</source>
         <translation>Nicht gestartet</translation>
     </message>
     <message>
-        <location filename="window.cpp" line="456"/>
+        <location filename="window.cpp" line="458"/>
         <source>&amp;Recent events</source>
         <translation>&amp;Jüngste Ereignisse</translation>
     </message>
     <message>
-        <location filename="window.cpp" line="459"/>
+        <location filename="window.cpp" line="461"/>
         <source>&amp;Open OneDrive folder</source>
         <translation>&amp;OneDrive-Ordner öffnen</translation>
     </message>
     <message>
-        <location filename="window.cpp" line="465"/>
+        <location filename="window.cpp" line="467"/>
         <source>&amp;Restart the synchronization</source>
         <translation>&amp;Neustart der Synchronisierung</translation>
     </message>
     <message>
-        <location filename="window.cpp" line="469"/>
+        <location filename="window.cpp" line="471"/>
         <source>&amp;Suspend the synchronization</source>
         <translation>&amp;Unterbrechen der Synchronisierung</translation>
     </message>
     <message>
-        <location filename="window.cpp" line="491"/>
+        <location filename="window.cpp" line="493"/>
         <source>&amp;More colors...</source>
         <translation>&amp;Mehr Farben...</translation>
     </message>
     <message>
-        <location filename="window.cpp" line="497"/>
+        <location filename="window.cpp" line="499"/>
         <source>&amp;Quit OneDrive</source>
         <translation>OneDrive &amp;beenden</translation>
     </message>
     <message>
-        <location filename="window.cpp" line="500"/>
+        <location filename="window.cpp" line="502"/>
         <source>&amp;About OneDrive</source>
         <translation>&amp;Über OneDrive</translation>
     </message>
     <message>
-        <location filename="window.cpp" line="529"/>
+        <location filename="window.cpp" line="531"/>
         <source>Icon color</source>
         <translation>Icon-Farbe</translation>
     </message>
