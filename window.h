@@ -71,6 +71,7 @@ class Window : public QDialog
     void eventsInfo(QString info);
     void eventsError(QString error);
     void eventsOperation(QString Operation, QString fileName);
+    QString getShortDateTimeFormat();
 
     bool auto_hide;
     bool isSyncing;
