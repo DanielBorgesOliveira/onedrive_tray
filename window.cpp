@@ -353,7 +353,7 @@ void Window::about()
                                 "So many thanks to<ul>"
                                 "<li>abraunegg (https://github.com/abraunegg/onedrive)</li>"
                                 "<li>Daniel Borges Oliveira who developed the first version of this program (https://github.com/DanielBorgesOliveira/onedrive_tray)</li></ul><br>"
-                                "Feel free to clone and improve this program (https://github.com/bforest76/onedrive_tray).<br>"));
+                                "Feel free to clone and improve this program (https://github.com/DanielBorgesOliveira/onedrive_tray).<br>"));
 }
 
 void Window::iconActivated(QSystemTrayIcon::ActivationReason reason)
