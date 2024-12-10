@@ -76,6 +76,11 @@ systemctl enable --user onedrive_tray.service
 lupdate systray.pro
 ```
 
+If "lupdate" responds with the error “could not exec /usr/lib/x86_64-linux-gnu/qt5/bin/lupdate: No such file or directory” execute:
+```
+sudo apt-get install qttools5-dev-tools
+```
+
 This command initiates the onedrive_tray_xx.ts file.
 
 - Now execute the command
